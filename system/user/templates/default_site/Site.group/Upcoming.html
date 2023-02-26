@@ -1,0 +1,52 @@
+{embed="site/_header" active="tabs__link--active js-tabs__link--active"  activeli="active"}
+<div class="wrapper wrapper--wide whats-on__wrapper tabs" style="min-height: 1076px;">
+<div class="tabs__panel active">
+{exp:channel:entries limit="6" orderby="date_show" sort="asc"}
+<article class="card-link card-link--reveal" style="transition-delay: 0s;"> 
+
+    <div class="card-link__image">
+      <a class="card-link__image-link">{photo wrap="image"}</a>
+    </div>
+    <div class="card-link__content">
+      <div class="card-link__titles">
+        <h3 class="h4 card-link__heading">{title}</h3>
+        {if {date_of_show:total_fields} >0 }
+        <p class="card-link__sub-heading">{date_of_show}
+          {date_of_show:date_show}
+          {if {date_of_show::index} > 0} & {/if} {content format="%D, %F %d, %Y"}
+          {date_of_show:date_show}
+          {/date_of_show}</p>
+        {if:else}
+        <p class="card-link__sub-heading">Dates to be announced</p>
+        {/if}
+      </div>
+      <div class="card-link__info">
+        <ul class="card-link__list"> 
+          {if {date_on_sale} > {current_time}}
+          <li class="card-link__item">
+            <span class="card-link__item-title">On Sale</span>
+            <span class="card-link__item-description">{date_on_sale format="%D, %F %d, %Y - %g:%i:%s"}</span>
+            {/if}
+        </ul>
+      <div class="card-link__ctas">
+        <div class="inline-ctas">
+          <a class="inline-ctas__cta text-pink"><span class="inline-ctas__text">Learn more<i class="icon-right-arrow inline-ctas__arrow"></i></span></a>
+          {if {date_on_sale} > {current_time}}
+          <a class="inline-ctas__cta text-white"> <i class="icon-calendar inline-ctas__icon"></i> <span class="inline-ctas__text">Remind me</span><i class="icon-right-arrow inline-ctas__arrow"></i></a>
+          {if:elseif sold_out}
+          <span class="inline-ctas__cta text-white"> <i class="icon-sold-out inline-ctas__icon"></i> <span class="inline-ctas__text">Sold Out</span></span>
+          {if:else}
+          <a class="inline-ctas__cta text-white"> <i class="icon-ticket inline-ctas__icon"></i> <span class="inline-ctas__text">Buy Now</span><i class="icon-right-arrow inline-ctas__arrow"></i></a>
+          {/if}
+         
+</div>
+</div>
+  
+</div>
+
+      </article>
+     {/exp:channel:entries}
+    </div>
+    </div>
+    
+  {embed="site/_footer"}
